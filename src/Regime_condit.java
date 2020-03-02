@@ -5,7 +5,8 @@ public class Regime_condit {
         Scanner input = new Scanner (System.in);
         int regime =input.nextInt();
         String condition_regime="включен холодный режим";
-        if (regime==0) { condition_regime="включен холодный режим";}
+        if (regime==0) { condition_regime="включен холодный режим";
+        }
         if(regime==1) { condition_regime="включен горячий режим";}
         if(regime!=0 & regime!=1) {
             System.out.println("некоректный ввод ");}
