@@ -1,45 +1,58 @@
 import java.util.Scanner;
 
-public    class Condit {
-    static int power = 0;
-    public static void main(String[] args) {
+public class Condit  {
 
-        System.out.println("сейчас питание отключено, режим выбран холодный ");
+   static public  boolean power = false;
+    static public  boolean work = false;
+   static public  boolean hot_regime = false;
 
-        int i = 5;
-        int regime = 0;
+   public static void change_power(){
+       if (power= false){
+       power=true;
+       System.out.println(" питание включено ");
+       }
+       if (power=true){
+           if(work= true){
+               work= false;
+               System.out.println("работа кондиционера прекращена ");}
+           power=false;
+           System.out.println(" питание выключено ");
+       }
 
-        String power_con1 = "питание отключено";
-        int work = 0;
-        while (i != 4) {
-            System.out.println("Данный кондиционер имеет следующие кнопки :");
-            System.out.println("1-кнопка питания (включает питание, при поворном нажатии отключает )");
-            System.out.println("2-кнопка работы(приводит кондиционер в работу на одну минуту)");
-            System.out.println("3-кнопка смены режима( холодный 1/горячий воздух 2 ");
-            System.out.println("4-выход из симуляции кондционера");
-            System.out.println("выберите кнопку и введи её номер ");
-            Scanner input = new Scanner(System.in);
-            i = input.nextInt();
-            if (i == 1) {
-                Power_condit power_condit = new Power_condit();
-                Power_condit.power_control();
-                System.out.println("power is " + power);
+   }
+
+    public static void change_regime() {
+        if (power = true) {
+            if (hot_regime = true) {
+                hot_regime = false;
+                System.out.println("включен холодный режим ");
             }
+            else {
+                hot_regime = true;
+                System.out.println("включен горячий  режим ");
 
-                if (i == 3) {
-
-                if (power==0){
-                    System.out.println("для изменения режима, пожалуйста, включите питание ");
-                }
-                else { Regime_condit regime_condit= new Regime_condit();
-                regime_condit.regime_control();
-
-
-                }
             }
-
-
         }
-        System.out.println("до встречи!");
+       else{
+                System.out.println("для изменения режима необходимо включить питание ");
+            }
+        }
+    public static void change_work() {
+       if (power=true) {
+           if (work = false) {
+               work = true;
+               System.out.println("кондиционер будет работать 1 минуту");
+           } else {
+               System.out.println("работа кондиционера продлена еще на минуту ");
+           }
+       }
+           else {
+           System.out.println("для начала работы кондиционера необходимо подключить питание ");
+           }
     }
+
+
+
+
+
 }
