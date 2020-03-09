@@ -1,58 +1,61 @@
-import java.util.Scanner;
 
-public class Condit  {
+public class Condit {
 
-   static public  boolean power = false;
-    static public  boolean work = false;
-   static public  boolean hot_regime = false;
+    public boolean power = false;
+    public boolean work = false;
+    public int time = 0;
 
-   public static void change_power(){
-       if (power= false){
-       power=true;
-       System.out.println(" питание включено ");
-       }
-       if (power=true){
-           if(work= true){
-               work= false;
-               System.out.println("работа кондиционера прекращена ");}
-           power=false;
-           System.out.println(" питание выключено ");
-       }
+    public enum Regime {HOT, COLD}
 
-   }
+    Regime regime = Regime.COLD;
 
-    public static void change_regime() {
+    public void change_power() {
+        if (power = false) {
+            power = true;
+            System.out.println(" питание включено ");
+        }
         if (power = true) {
-            if (hot_regime = true) {
-                hot_regime = false;
-                System.out.println("включен холодный режим ");
+            if (work = true) {
+                work = false;
+                System.out.println("работа кондиционера прекращена ");
             }
-            else {
-                hot_regime = true;
+            power = false;
+            time=0;
+            System.out.println(" питание выключено ");
+        }
+
+    }
+
+    public void change_regime() {
+        if (power = true) {
+            if (regime == Regime.HOT) {
+                regime = Regime.COLD;
+                System.out.println("включен холодный режим ");
+            } else {
+                regime = Regime.HOT;
                 System.out.println("включен горячий  режим ");
 
             }
+        } else {
+            System.out.println("для изменения режима необходимо включить питание ");
         }
-       else{
-                System.out.println("для изменения режима необходимо включить питание ");
-            }
-        }
-    public static void change_work() {
-       if (power=true) {
-           if (work = false) {
-               work = true;
-               System.out.println("кондиционер будет работать 1 минуту");
-           } else {
-               System.out.println("работа кондиционера продлена еще на минуту ");
-           }
-       }
-           else {
-           System.out.println("для начала работы кондиционера необходимо подключить питание ");
-           }
     }
 
+    public void change_work() {
+        if (power = true) {
+            if (work = false) {
+                work = true;
+                System.out.println("кондиционер будет работать 60 секунд");
+                time = 60;
+            } else {
+                System.out.println("работа кондиционера продлена еще на 60 секунд ");
+                time += 60;
 
-
+            }
+        } else {
+            System.out.println("для начала работы кондиционера необходимо подключить питание ");
+        }
+    }
 
 
 }
